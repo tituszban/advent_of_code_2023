@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
 @cli.command()
 @click.option("--day", type=int, default=datetime.now().day)
-@click.argument("session_cookie", type=str)
+@click.option("--session_cookie", type=str)
 @click.option("--year", type=int, default=datetime.now().year)
 def new_day(day: int, session_cookie: str, year: str):
     padded = str(day).zfill(2)
@@ -44,6 +44,10 @@ def new_day(day: int, session_cookie: str, year: str):
     with open(f"{padded}/1/main.py", "w") as f:
         f.writelines(main_template.format(padded))
 
+    if not session_cookie:
+        print("No session cookie specified. Skipping download")
+        return
+    
     url = f"https://adventofcode.com/{year}/day/{day}/input"
 
     print(f"Downloading: {url}")
