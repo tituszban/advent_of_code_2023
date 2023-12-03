@@ -37,18 +37,6 @@ def solve(input_lines: list[str]):
 def main():
     with open("03/input.txt") as f:
         test_input = list(map(lambda l: l.strip(), f.readlines()))
-    # test_input = [
-    #     "467..114..",
-    #     "...*......",
-    #     "..35..633.",
-    #     "......#...",
-    #     "617*......",
-    #     ".....+.58.",
-    #     "..592.....",
-    #     "......755.",
-    #     "...$.*....",
-    #     ".664.598..",
-    # ]
 
     print(solve(test_input))
 
