@@ -47,14 +47,17 @@ def new_day(day: int, session_cookie: str, year: str):
     if not session_cookie:
         print("No session cookie specified. Skipping download")
         return
-    
+
     url = f"https://adventofcode.com/{year}/day/{day}/input"
 
     print(f"Downloading: {url}")
 
-    r = requests.get(url, headers={
-        "Cookie": f"session={session_cookie}"
-    })
+    r = requests.get(
+        url,
+        headers={
+            "Cookie": f"session={session_cookie}"
+        },
+        verify=False)
 
     with open(f"{padded}/input.txt", "w") as f:
         f.writelines(r.text)
