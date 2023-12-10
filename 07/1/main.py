@@ -3,10 +3,8 @@ from functools import reduce
 
 def calculate_rank(cards: str):
     count_by_type = sorted(
-        reduce(
-            lambda acc, c: {**acc, c: acc.get(c, 0) + 1},
-            cards, {}).items(),
-        key=lambda kv: kv[1], reverse=True)
+        reduce(lambda acc, c: {**acc, c: acc.get(c, 0) + 1}, cards, {}).items(), key=lambda kv: kv[1], reverse=True
+    )
     return (
         6 if count_by_type[0][1] == 5 else
         5 if count_by_type[0][1] == 4 else
@@ -19,7 +17,7 @@ def calculate_rank(cards: str):
 
 
 class Hand:
-    cards_ranked = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+    cards_ranked = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
 
     def __init__(self, cards: str) -> None:
         self._cards = cards
@@ -35,18 +33,14 @@ class Hand:
 
 
 def solve(input_lines: list[str]):
-    hands = [
-        (Hand(sp[0]), int(sp[1]))
-        for line in input_lines
-        if (sp := line.split())
-    ]
+    hands = [(Hand(sp[0]), int(sp[1])) for line in input_lines if (sp := line.split())]
     ranked = sorted(hands, key=lambda h: h[0].sorting_key)
     return sum([(i + 1) * hand[1] for i, hand in enumerate(ranked)])
 
 
 def main():
     with open("07/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

@@ -6,10 +6,11 @@ class Number:
     @property
     def range(self):
         return range(self._len)
-    
+
     @property
     def n(self):
         return self._n
+
 
 def build_grid(input_lines: list[str]):
     grid = []
@@ -54,12 +55,11 @@ def solve(input_lines: list[str]):
                 sum_product += numbers_l[0].n * numbers_l[1].n
 
     return sum_product
-        
 
 
 def main():
     with open("03/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

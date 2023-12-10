@@ -23,10 +23,7 @@ def simulate(directions: str, nodes: dict[str, Node]):
     current = [node_id for node_id in nodes if node_id.endswith("A")]
     for i, inst in enumerate(cycle(directions)):
         prev = list(current)
-        current = [
-            nodes[node_id].get_next(inst)
-            for node_id in current
-        ]
+        current = [nodes[node_id].get_next(inst) for node_id in current]
         yield (i + 1, prev, current)
 
 
@@ -75,7 +72,7 @@ def solve(input_lines: list[str]):
 
 def main():
     with open("08/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

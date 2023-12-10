@@ -1,16 +1,15 @@
-
 from math import ceil, floor
 
-e = 10 ** -10
+e = 10**-10
 
 
 def solve_quadratic(a: float, b: float, c: float):
-    discriminant = b ** 2 - 4 * a * c
+    discriminant = b**2 - 4 * a * c
     if discriminant < 0:
         raise ValueError("No real solutions")
 
-    x1 = (-b + discriminant ** 0.5) / (2 * a)
-    x2 = (-b - discriminant ** 0.5) / (2 * a)
+    x1 = (-b + discriminant**0.5) / (2 * a)
+    x2 = (-b - discriminant**0.5) / (2 * a)
     return x1, x2
 
 
@@ -24,7 +23,7 @@ def solve(input_lines: list[str]):
 
 def main():
     with open("06/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

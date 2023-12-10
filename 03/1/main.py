@@ -1,13 +1,10 @@
 import numpy as np
 from scipy.signal import convolve2d
 
+
 def get_symbol_adjacent(input_lines: list[str]):
     symbols = np.array([[0 if c in "0123456789." else 1 for c in line] for line in input_lines])
-    kernel = np.array([
-        [1, 1, 1],
-        [1, 0, 1],
-        [1, 1, 1]
-    ])
+    kernel = np.array([[1, 1, 1], [1, 0, 1], [1, 1, 1]])
     return convolve2d(symbols, kernel, mode="same", boundary="fill", fillvalue=0)
 
 
@@ -31,12 +28,11 @@ def solve(input_lines: list[str]):
             numbers.append(acc)
 
     return sum(map(int, numbers))
-        
 
 
 def main():
     with open("03/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

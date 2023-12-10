@@ -39,8 +39,7 @@ class Section:
                 mapped_ranges.append(value.offset(dest - source))
                 break
 
-            mapped_ranges.append(
-                Range(value.start, source + length).offset(dest - source))
+            mapped_ranges.append(Range(value.start, source + length).offset(dest - source))
             value = value.trim(source + length)
             ranges.pop(0)
         if not any(ranges):
@@ -60,18 +59,19 @@ def solve(input_lines: list[str]):
             acc[-1].append(line)
         return acc
 
-    sections = list(
-        map(Section, reduce(reduce_sections, input_lines[2:], [[]])))
+    sections = list(map(Section, reduce(reduce_sections, input_lines[2:], [[]])))
 
     def map_seed(_seed_range: Range):
-        return reduce(lambda seeds, s: [dest for seed in seeds for dest in s.map_to_destination(seed)], sections, [_seed_range])
+        return reduce(
+            lambda seeds, s: [dest for seed in seeds for dest in s.map_to_destination(seed)], sections, [_seed_range]
+        )
 
     return min([seed.start for seeds in map(map_seed, seed_ranges) for seed in seeds])
 
 
 def main():
     with open("05/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

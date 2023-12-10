@@ -15,6 +15,7 @@ test_input = [
 
 expected_result = 4361
 
+
 def test_solve():
-   actual_result = solve(test_input)
-   assert actual_result == expected_result
+    actual_result = solve(test_input)
+    assert actual_result == expected_result

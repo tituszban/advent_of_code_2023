@@ -30,7 +30,7 @@ def solve(input_lines: list[str]):
 
 def main():
     with open("09/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

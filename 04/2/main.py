@@ -1,7 +1,9 @@
 import re
 
+
 class Card:
     card_re = re.compile(r"^Card\s+(?P<id>\d+):\s(?P<winning>[\d\s]+)\s\|\s(?P<nums>[\d\s]+)\s*$")
+
     def __init__(self, line: str):
         assert (m := self.card_re.match(line))
         self._id = int(m.group("id"))
@@ -14,7 +16,7 @@ class Card:
         if count == 0:
             return []
         return range(self._id + 1, self._id + count + 1)
-    
+
     @property
     def id(self):
         return self._id
@@ -22,7 +24,7 @@ class Card:
 
 def solve(input_lines: list[str]):
     cards = {(c := Card(line)).id: c for line in input_lines}
-    score_cache = {card_id: None for card_id in cards}
+    score_cache: dict[int, int] = {card_id: None for card_id in cards}
 
     win_count = 0
 
@@ -41,7 +43,7 @@ def solve(input_lines: list[str]):
 
 def main():
     with open("04/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

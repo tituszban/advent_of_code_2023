@@ -1,4 +1,3 @@
-
 def solve(input_lines: list[str]):
     total = 0
     digits = {
@@ -34,9 +33,10 @@ def solve(input_lines: list[str]):
         total += int(first + last)
     return total
 
+
 def main():
     with open("01/input.txt") as f:
-        test_input = list(map(lambda l: l.strip(), f.readlines()))
+        test_input = list(map(lambda line: line.strip(), f.readlines()))
 
     print(solve(test_input))
 

@@ -1,28 +1,28 @@
-
 from main import *
 
+
 def test_section_1():
-    section = Section([
-        "seed-to-soil map:",
-        "50 98 2",
-        "52 50 48",
-    ])
+    section = Section(
+        [
+            "seed-to-soil map:",
+            "50 98 2",
+            "52 50 48",
+        ]
+    )
     seed_range = Range(48, 110)
     sections = section.map_to_destination(seed_range)
 
-    assert sections == [
-        Range(48, 50),
-        Range(52, 100),
-        Range(50, 52),
-        Range(100, 110)
-    ]
+    assert sections == [Range(48, 50), Range(52, 100), Range(50, 52), Range(100, 110)]
+
 
 def test_section_2():
-    section = Section([
-        "seed-to-soil map:",
-        "50 98 2",
-        "52 50 48",
-    ])
+    section = Section(
+        [
+            "seed-to-soil map:",
+            "50 98 2",
+            "52 50 48",
+        ]
+    )
     seed_range = Range(60, 99)
     sections = section.map_to_destination(seed_range)
 
@@ -31,18 +31,22 @@ def test_section_2():
         Range(50, 51),
     ]
 
+
 def test_section_3():
-    section = Section([
-        "seed-to-soil map:",
-        "50 98 2",
-        "52 50 48",
-    ])
+    section = Section(
+        [
+            "seed-to-soil map:",
+            "50 98 2",
+            "52 50 48",
+        ]
+    )
     seed_range = Range(60, 65)
     sections = section.map_to_destination(seed_range)
 
     assert sections == [
         Range(62, 67),
     ]
+
 
 def test_example():
     input_lines = [
